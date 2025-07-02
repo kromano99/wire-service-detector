@@ -1,0 +1,56 @@
+// vercel.json
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "server.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "public/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/server.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/public/$1"
+    }
+  ],
+  "functions": {
+    "server.js": {
+      "maxDuration": 300
+    }
+  }
+}
+
+// railway.toml
+[build]
+  builder = "NIXPACKS"
+
+[deploy]
+  numReplicas = 1
+  sleepApplication = false
+  restartPolicyType = "ON_FAILURE"
+
+[env]
+  NODE_ENV = "production"
+  PUPPETEER_SKIP_CHROMIUM_DOWNLOAD = "true"
+
+// render.yaml
+services:
+  - type: web
+    name: wire-service-detector
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PUPPETEER_SKIP_CHROMIUM_DOWNLOAD
+        value: "true"
