@@ -1,4 +1,3 @@
-// server.js
 const express = require('express');
 const puppeteer = require('puppeteer');
 const cors = require('cors');
@@ -641,22 +640,3 @@ app.listen(PORT, () => {
   console.log(`🚀 Wire Service Detector deployed on port ${PORT}`);
   console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
 });
-
-// Dockerfile
-FROM ghcr.io/puppeteer/puppeteer:21.6.1
-
-ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
-    PUPPETEER_EXECUTABLE_PATH=/usr/bin/google-chrome-stable
-
-WORKDIR /usr/src/app
-
-COPY package*.json ./
-RUN npm ci --only=production && npm cache clean --force
-
-COPY . .
-
-EXPOSE 3000
-
-USER pptruser
-
-CMD ["node", "server.js"]
