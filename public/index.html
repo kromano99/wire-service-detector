@@ -45,78 +45,954 @@
             padding: 20px;
         }
 
-        .header {<td style="font-size: 11px;">
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 0;
+            background: linear-gradient(135deg, var(--primary-color), #3b82f6);
+            color: white;
+            border-radius: 12px;
+            margin: -20px -20px 40px -20px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .info-box {
+            background: #dbeafe;
+            border: 1px solid #3b82f6;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .info-box h3 {
+            color: #1e40af;
+            margin-bottom: 10px;
+        }
+
+        .info-box ul {
+            color: #1e40af;
+            margin-left: 20px;
+        }
+
+        .controls {
+            background: var(--surface-color);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .url-input {
+            width: 100%;
+            height: 120px;
+            padding: 12px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: monospace;
+            background: var(--bg-color);
+            color: var(--text-color);
+            resize: vertical;
+            transition: border-color 0.3s ease;
+        }
+
+        .url-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+        }
+
+        .btn-primary:disabled {
+            background: var(--text-muted);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background: var(--surface-color);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--border-color);
+        }
+
+        .theme-toggle {
+            margin-left: auto;
+        }
+
+        .progress-container {
+            display: none;
+            margin: 20px 0;
+            padding: 20px;
+            background: var(--surface-color);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        .progress-text {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .progress-details {
+            margin-top: 10px;
+            font-size: 12px;
+            color: var(--text-muted);
+            max-height: 100px;
+            overflow-y: auto;
+            background: var(--bg-color);
+            padding: 8px;
+            border-radius: 4px;
+        }
+
+        .results {
+            display: none;
+        }
+
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: var(--surface-color);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .results-stats {
+            display: flex;
+            gap: 30px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .site-result {
+            background: var(--surface-color);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .site-header {
+            background: var(--primary-color);
+            color: white;
+            padding: 16px 20px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .site-header:hover {
+            background: #1d4ed8;
+        }
+
+        .site-header .expand-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .site-header.expanded .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        .site-details {
+            padding: 20px;
+            border-top: 1px solid var(--border-color);
+            display: none;
+        }
+
+        .site-details.expanded {
+            display: block;
+        }
+
+        .site-summary {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+            padding: 16px;
+            background: var(--bg-color);
+            border-radius: 8px;
+        }
+
+        .summary-item {
+            text-align: center;
+        }
+
+        .summary-value {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .summary-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .wire-services-found {
+            margin-bottom: 20px;
+        }
+
+        .wire-services-found h4 {
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+
+        .wire-service-summary {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .wire-service-tag {
+            background: var(--success-color);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .service-count {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2px 6px;
+            border-radius: 8px;
+            font-size: 10px;
+        }
+
+        .confidence-display {
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .confidence-display.high { color: var(--success-color); }
+        .confidence-display.medium { color: var(--warning-color); }
+        .confidence-display.low { color: var(--error-color); }
+
+        .wire-service-evidence {
+            margin-top: 20px;
+            background: var(--bg-color);
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 15px;
+        }
+
+        .wire-service-evidence h5 {
+            color: var(--success-color);
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        .evidence-articles {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .evidence-article {
+            background: var(--surface-color);
+            border-radius: 6px;
+            padding: 12px;
+            border-left: 3px solid var(--success-color);
+        }
+
+        .evidence-url {
+            margin-bottom: 6px;
+        }
+
+        .evidence-url a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-family: monospace;
+            font-size: 12px;
+            word-break: break-all;
+        }
+
+        .evidence-url a:hover {
+            text-decoration: underline;
+        }
+
+        .evidence-byline {
+            margin-bottom: 4px;
+            font-size: 12px;
+            color: var(--text-color);
+        }
+
+        .evidence-byline strong {
+            color: var(--success-color);
+        }
+
+        .evidence-methods {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .evidence-methods strong {
+            color: var(--text-color);
+        }
+
+        .evidence-section {
+            margin-top: 15px;
+        }
+
+        .sample-bylines {
+            margin-top: 15px;
+        }
+
+        .sample-bylines h5 {
+            margin-bottom: 8px;
+            color: var(--text-color);
+        }
+
+        .byline-item {
+            background: var(--bg-color);
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin-bottom: 4px;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-family: monospace;
+        }
+
+        .article-results {
+            margin-top: 20px;
+        }
+
+        .article-results h5 {
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+
+        .article-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+
+        .article-table th {
+            background: var(--border-color);
+            color: var(--text-color);
+            padding: 8px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .article-table td {
+            padding: 8px;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: top;
+        }
+
+        .article-table tr:hover {
+            background: var(--bg-color);
+        }
+
+        .article-url {
+            font-family: monospace;
+            color: var(--primary-color);
+            max-width: 300px;
+            word-break: break-all;
+        }
+
+        .article-services {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2px;
+        }
+
+        .article-service-tag {
+            background: var(--success-color);
+            color: white;
+            padding: 1px 6px;
+            border-radius: 8px;
+            font-size: 10px;
+        }
+
+        .error-message {
+            color: var(--error-color);
+            font-style: italic;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+        }
+
+        .spinner {
+            border: 3px solid var(--border-color);
+            border-top: 3px solid var(--primary-color);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 16px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header {
+                margin: -10px -10px 20px -10px;
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .site-summary {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .results-stats {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Multi-Article Wire Service Detector</h1>
+            <p>Comprehensive analysis: Reviews 8-15 articles per site for accurate wire service detection</p>
+        </div>
+
+        <div class="info-box">
+            <h3>🔍 How Multi-Article Analysis Works</h3>
+            <ul>
+                <li><strong>Discovery:</strong> Finds 8-15 articles from each news site</li>
+                <li><strong>Deep Analysis:</strong> Analyzes bylines, meta tags, content patterns, and URLs across all articles</li>
+                <li><strong>Aggregation:</strong> Determines wire service presence based on consistency across multiple articles</li>
+                <li><strong>Evidence Links:</strong> Provides 2-3 specific article URLs where wire services were detected for verification</li>
+            </ul>
+        </div>
+
+        <div class="controls">
+            <div class="form-group">
+                <label for="urlInput">Enter News Site URLs (one per line, max 5 sites):</label>
+                <textarea 
+                    id="urlInput" 
+                    class="url-input" 
+                    placeholder="https://apnews.com&#10;https://www.reuters.com&#10;https://www.bloomberg.com&#10;https://abcnews.go.com&#10;https://www.cnn.com"
+                ></textarea>
+            </div>
+            
+            <div class="button-group">
+                <button id="analyzeBtn" class="btn btn-primary">
+                    <span>🔍</span>
+                    Analyze Sites
+                </button>
+                <button id="clearBtn" class="btn btn-secondary">Clear</button>
+                <button id="exportBtn" class="btn btn-secondary" style="display: none;">Export CSV</button>
+                <button id="themeToggle" class="btn btn-secondary theme-toggle">🌙</button>
+            </div>
+        </div>
+
+        <div class="progress-container" id="progressContainer">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text" id="progressText">Starting analysis...</div>
+            <div class="progress-details" id="progressDetails"></div>
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Multi-article analysis in progress. This may take several minutes per site.</p>
+        </div>
+
+        <div class="results" id="results">
+            <div class="results-header">
+                <div class="results-stats">
+                    <div class="stat">
+                        <div class="stat-value" id="totalSites">0</div>
+                        <div class="stat-label">Sites Analyzed</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" id="sitesWithWireServices">0</div>
+                        <div class="stat-label">With Wire Services</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" id="totalArticles">0</div>
+                        <div class="stat-label">Articles Analyzed</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" id="avgConfidence">0%</div>
+                        <div class="stat-label">Avg Confidence</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="siteResults"></div>
+        </div>
+
+        <div class="footer">
+            <p>🚀 <strong>Real multi-article analysis</strong> using Puppeteer web scraping and comprehensive content analysis.</p>
+            <p>Each detected wire service includes specific evidence links for manual verification.</p>
+        </div>
+    </div>
+
+    <script>
+        let currentResults = [];
+        let eventSource = null;
+
+        // Theme toggle
+        document.getElementById('themeToggle').addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            document.getElementById('themeToggle').textContent = newTheme === 'dark' ? '☀️' : '🌙';
+            localStorage.setItem('theme', newTheme);
+        });
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        document.getElementById('themeToggle').textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+
+        // Clear button
+        document.getElementById('clearBtn').addEventListener('click', () => {
+            document.getElementById('urlInput').value = '';
+            document.getElementById('results').style.display = 'none';
+            document.getElementById('exportBtn').style.display = 'none';
+            currentResults = [];
+            
+            if (eventSource) {
+                eventSource.close();
+                eventSource = null;
+            }
+        });
+
+        // Analyze button
+        document.getElementById('analyzeBtn').addEventListener('click', async () => {
+            const urlInput = document.getElementById('urlInput').value.trim();
+            if (!urlInput) {
+                alert('Please enter at least one URL');
+                return;
+            }
+
+            const urls = urlInput.split('\n').map(url => url.trim()).filter(url => url);
+            if (urls.length === 0) {
+                alert('Please enter valid URLs');
+                return;
+            }
+
+            if (urls.length > 5) {
+                alert('Maximum 5 sites allowed per request');
+                return;
+            }
+
+            // Show loading state
+            document.getElementById('analyzeBtn').disabled = true;
+            document.getElementById('analyzeBtn').innerHTML = '<span>⏳</span> Analyzing...';
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('results').style.display = 'none';
+            document.getElementById('progressContainer').style.display = 'block';
+            document.getElementById('progressDetails').innerHTML = '';
+
+            try {
+                // Create EventSource for real-time progress
+                eventSource = new EventSource('/api/analyze');
+                
+                // Send the request
+                fetch('/api/analyze', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ urls })
+                });
+
+                eventSource.onmessage = function(event) {
+                    const data = JSON.parse(event.data);
+                    
+                    if (data.type === 'progress') {
+                        updateProgress(data.message);
+                    } else if (data.type === 'complete') {
+                        currentResults = data.results;
+                        displayResults(data);
+                        eventSource.close();
+                        eventSource = null;
+                    } else if (data.type === 'error') {
+                        throw new Error(data.error);
+                    }
+                };
+
+                eventSource.onerror = function(event) {
+                    console.error('EventSource error:', event);
+                    eventSource.close();
+                    eventSource = null;
+                    throw new Error('Connection lost during analysis');
+                };
+
+            } catch (error) {
+                console.error('Analysis error:', error);
+                alert('Analysis failed: ' + error.message);
+            } finally {
+                // Reset button state
+                document.getElementById('analyzeBtn').disabled = false;
+                document.getElementById('analyzeBtn').innerHTML = '<span>🔍</span> Analyze Sites';
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('progressContainer').style.display = 'none';
+            }
+        });
+
+        function updateProgress(message) {
+            const progressText = document.getElementById('progressText');
+            const progressDetails = document.getElementById('progressDetails');
+            
+            progressText.textContent = message;
+            
+            // Add to details log
+            const timestamp = new Date().toLocaleTimeString();
+            progressDetails.innerHTML += `<div>[${timestamp}] ${message}</div>`;
+            progressDetails.scrollTop = progressDetails.scrollHeight;
+        }
+
+        function displayResults(data) {
+            const { results, summary } = data;
+            
+            // Update statistics
+            document.getElementById('totalSites').textContent = summary.totalSites;
+            document.getElementById('sitesWithWireServices').textContent = summary.sitesWithWireServices;
+            document.getElementById('totalArticles').textContent = summary.totalArticlesAnalyzed;
+            document.getElementById('avgConfidence').textContent = summary.averageConfidence + '%';
+            
+            // Clear and populate site results
+            const siteResults = document.getElementById('siteResults');
+            siteResults.innerHTML = '';
+            
+            results.forEach((result, index) => {
+                const siteDiv = createSiteResultElement(result, index);
+                siteResults.appendChild(siteDiv);
+            });
+            
+            // Show results and export button
+            document.getElementById('results').style.display = 'block';
+            document.getElementById('exportBtn').style.display = 'inline-flex';
+            
+            // Scroll to results
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function createSiteResultElement(result, index) {
+            const siteDiv = document.createElement('div');
+            siteDiv.className = 'site-result';
+            
+            const confidenceClass = result.confidence >= 70 ? 'high' : 
+                                  result.confidence >= 40 ? 'medium' : 'low';
+            
+            const wireServiceTags = result.wireServices.map(service => {
+                const summary = result.detectionSummary[service];
+                return `<span class="wire-service-tag">
+                    ${service}
+                    <span class="service-count">${summary.articlesFound}/${result.articlesAnalyzed}</span>
+                </span>`;
+            }).join('');
+            
+            const sampleBylines = result.sampleBylines.slice(0, 3).map(byline => 
+                `<div class="byline-item">${byline}</div>`
+            ).join('');
+
+            // Create evidence sections for each wire service
+            const evidenceSections = result.wireServices.map(service => {
+                const summary = result.detectionSummary[service];
+                const evidenceArticles = summary.evidenceArticles.map(evidence => `
+                    <div class="evidence-article">
+                        <div class="evidence-url">
+                            <a href="${evidence.url}" target="_blank" rel="noopener noreferrer">
+                                ${evidence.url.length > 80 ? evidence.url.substring(0, 80) + '...' : evidence.url}
+                            </a>
+                        </div>
+                        ${evidence.bylineText.length > 0 ? `
+                            <div class="evidence-byline">
+                                <strong>Byline:</strong> "${evidence.bylineText.join(', ')}"
+                            </div>
+                        ` : ''}
+                        <div class="evidence-methods">
+                            <strong>Detection:</strong> ${evidence.detectionMethods.join(', ')}
+                        </div>
+                    </div>
+                `).join('');
+                
+                return `
+                    <div class="wire-service-evidence">
+                        <h5>${service} - Evidence Articles:</h5>
+                        <div class="evidence-articles">
+                            ${evidenceArticles}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            siteDiv.innerHTML = `
+                <div class="site-header" onclick="toggleSiteDetails(${index})">
+                    <div>
+                        <strong>${result.domain || 'Unknown Domain'}</strong>
+                        ${result.error ? `<span class="error-message"> - Error: ${result.error}</span>` : ''}
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div class="confidence-display ${confidenceClass}">${result.confidence}%</div>
+                        <span class="expand-icon">▼</span>
+                    </div>
+                </div>
+                <div class="site-details" id="details-${index}">
+                    <div class="site-summary">
+                        <div class="summary-item">
+                            <div class="summary-value">${result.articlesAnalyzed}</div>
+                            <div class="summary-label">Articles Analyzed</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-value">${result.articlesWithWireServices}</div>
+                            <div class="summary-label">With Wire Services</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-value">${result.wireServices.length}</div>
+                            <div class="summary-label">Services Detected</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-value">${result.processingTime}</div>
+                            <div class="summary-label">Processing Time</div>
+                        </div>
+                    </div>
+                    
+                    ${result.wireServices.length > 0 ? `
+                        <div class="wire-services-found">
+                            <h4>Wire Services Detected:</h4>
+                            <div class="wire-service-summary">
+                                ${wireServiceTags}
+                            </div>
+                            
+                            <div class="evidence-section">
+                                ${evidenceSections}
+                            </div>
+                        </div>
+                    ` : '<div style="color: var(--text-muted); font-style: italic;">No wire services detected</div>'}
+                    
+                    ${result.sampleBylines.length > 0 ? `
+                        <div class="sample-bylines">
+                            <h5>Sample Bylines Found:</h5>
+                            ${sampleBylines}
+                        </div>
+                    ` : ''}
+                    
+                    <div class="article-results">
+                        <h5>Individual Article Results:</h5>
+                        <table class="article-table">
+                            <thead>
+                                <tr>
+                                    <th>Article URL</th>
+                                    <th>Wire Services</th>
+                                    <th>Byline Text</th>
+                                    <th>Methods</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${result.articleResults.slice(0, 10).map(article => `
+                                    <tr>
+                                        <td class="article-url">
+                                            ${article.url.length > 60 ? article.url.substring(0, 60) + '...' : article.url}
+                                        </td>
+                                        <td>
+                                            ${article.error ? `<span class="error-message">${article.error}</span>` :
+                                              article.wireServices && article.wireServices.length > 0 ? 
+                                                `<div class="article-services">
+                                                    ${article.wireServices.map(service => 
+                                                        `<span class="article-service-tag">${service}</span>`
+                                                    ).join('')}
+                                                </div>` : 
+                                                '<span style="color: var(--text-muted);">None</span>'
+                                            }
+                                        </td>
+                                        <td style="max-width: 200px; font-size: 11px;">
+                                            ${article.bylineText && article.bylineText.length > 0 ? 
+                                                article.bylineText.slice(0, 2).join(', ') : 
+                                                '<span style="color: var(--text-muted);">None</span>'
+                                            }
+                                        </td>
+                                        <td style="font-size: 11px;">
                                             ${article.detectionMethods && article.detectionMethods.length > 0 ? 
                                                 article.detectionMethods.join(', ') : 
                                                 '<span style="color: var(--text-muted);">None</span>'
                                             }
-                                        </td>
-                                    </tr>
-                                `).join('')}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            `;
-            
-            return siteDiv;
-        }
+                                            </td>
+                                   </tr>
+                               `).join('')}
+                           </tbody>
+                       </table>
+                   </div>
+               </div>
+           `;
+           
+           return siteDiv;
+       }
 
-        function toggleSiteDetails(index) {
-            const details = document.getElementById(`details-${index}`);
-            const header = details.previousElementSibling;
-            
-            if (details.classList.contains('expanded')) {
-                details.classList.remove('expanded');
-                header.classList.remove('expanded');
-            } else {
-                details.classList.add('expanded');
-                header.classList.add('expanded');
-            }
-        }
+       function toggleSiteDetails(index) {
+           const details = document.getElementById(`details-${index}`);
+           const header = details.previousElementSibling;
+           
+           if (details.classList.contains('expanded')) {
+               details.classList.remove('expanded');
+               header.classList.remove('expanded');
+           } else {
+               details.classList.add('expanded');
+               header.classList.add('expanded');
+           }
+       }
 
-        // Export to CSV
-        document.getElementById('exportBtn').addEventListener('click', () => {
-            if (currentResults.length === 0) return;
-            
-            let csvContent = 'Domain,Input URL,Wire Services,Confidence %,Articles Analyzed,Articles with Wire Services,Processing Time,Evidence URLs\n';
-            
-            currentResults.forEach(result => {
-                const wireServices = result.wireServices.join('; ');
-                
-                // Collect evidence URLs for each wire service
-                const evidenceUrls = [];
-                result.wireServices.forEach(service => {
-                    const summary = result.detectionSummary[service];
-                    if (summary && summary.evidenceArticles) {
-                        summary.evidenceArticles.forEach(evidence => {
-                            evidenceUrls.push(`${service}: ${evidence.url}`);
-                        });
-                    }
-                });
-                const evidenceString = evidenceUrls.join(' | ').replace(/"/g, '""');
-                
-                csvContent += `"${result.domain}","${result.inputUrl}","${wireServices}",${result.confidence},${result.articlesAnalyzed},${result.articlesWithWireServices},"${result.processingTime}","${evidenceString}"\n`;
-            });
-            
-            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-            const link = document.createElement('a');
-            const url = URL.createObjectURL(blob);
-            
-            link.setAttribute('href', url);
-            link.setAttribute('download', `multi-article-wire-service-analysis-${new Date().toISOString().split('T')[0]}.csv`);
-            link.style.visibility = 'hidden';
-            
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        });
+       // Export to CSV
+       document.getElementById('exportBtn').addEventListener('click', () => {
+           if (currentResults.length === 0) return;
+           
+           let csvContent = 'Domain,Input URL,Wire Services,Confidence %,Articles Analyzed,Articles with Wire Services,Processing Time,Evidence URLs\n';
+           
+           currentResults.forEach(result => {
+               const wireServices = result.wireServices.join('; ');
+               
+               // Collect evidence URLs for each wire service
+               const evidenceUrls = [];
+               result.wireServices.forEach(service => {
+                   const summary = result.detectionSummary[service];
+                   if (summary && summary.evidenceArticles) {
+                       summary.evidenceArticles.forEach(evidence => {
+                           evidenceUrls.push(`${service}: ${evidence.url}`);
+                       });
+                   }
+               });
+               const evidenceString = evidenceUrls.join(' | ').replace(/"/g, '""');
+               
+               csvContent += `"${result.domain}","${result.inputUrl}","${wireServices}",${result.confidence},${result.articlesAnalyzed},${result.articlesWithWireServices},"${result.processingTime}","${evidenceString}"\n`;
+           });
+           
+           const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+           const link = document.createElement('a');
+           const url = URL.createObjectURL(blob);
+           
+           link.setAttribute('href', url);
+           link.setAttribute('download', `multi-article-wire-service-analysis-${new Date().toISOString().split('T')[0]}.csv`);
+           link.style.visibility = 'hidden';
+           
+           document.body.appendChild(link);
+           link.click();
+           document.body.removeChild(link);
+       });
 
-        // Pre-populate with sample URLs
-        document.addEventListener('DOMContentLoaded', () => {
-            // Uncomment to pre-populate for testing
-            // document.getElementById('urlInput').value = 'https://apnews.com\nhttps://www.reuters.com\nhttps://www.bloomberg.com';
-        });
-    </script>
+       // Pre-populate with sample URLs
+       document.addEventListener('DOMContentLoaded', () => {
+           // Uncomment to pre-populate for testing
+           // document.getElementById('urlInput').value = 'https://apnews.com\nhttps://www.reuters.com\nhttps://www.bloomberg.com';
+       });
+   </script>
 </body>
 </html>
