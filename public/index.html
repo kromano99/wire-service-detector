@@ -45,4 +45,78 @@
             padding: 20px;
         }
 
-        .header {
+        .header {<td style="font-size: 11px;">
+                                            ${article.detectionMethods && article.detectionMethods.length > 0 ? 
+                                                article.detectionMethods.join(', ') : 
+                                                '<span style="color: var(--text-muted);">None</span>'
+                                            }
+                                        </td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            `;
+            
+            return siteDiv;
+        }
+
+        function toggleSiteDetails(index) {
+            const details = document.getElementById(`details-${index}`);
+            const header = details.previousElementSibling;
+            
+            if (details.classList.contains('expanded')) {
+                details.classList.remove('expanded');
+                header.classList.remove('expanded');
+            } else {
+                details.classList.add('expanded');
+                header.classList.add('expanded');
+            }
+        }
+
+        // Export to CSV
+        document.getElementById('exportBtn').addEventListener('click', () => {
+            if (currentResults.length === 0) return;
+            
+            let csvContent = 'Domain,Input URL,Wire Services,Confidence %,Articles Analyzed,Articles with Wire Services,Processing Time,Evidence URLs\n';
+            
+            currentResults.forEach(result => {
+                const wireServices = result.wireServices.join('; ');
+                
+                // Collect evidence URLs for each wire service
+                const evidenceUrls = [];
+                result.wireServices.forEach(service => {
+                    const summary = result.detectionSummary[service];
+                    if (summary && summary.evidenceArticles) {
+                        summary.evidenceArticles.forEach(evidence => {
+                            evidenceUrls.push(`${service}: ${evidence.url}`);
+                        });
+                    }
+                });
+                const evidenceString = evidenceUrls.join(' | ').replace(/"/g, '""');
+                
+                csvContent += `"${result.domain}","${result.inputUrl}","${wireServices}",${result.confidence},${result.articlesAnalyzed},${result.articlesWithWireServices},"${result.processingTime}","${evidenceString}"\n`;
+            });
+            
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            
+            link.setAttribute('href', url);
+            link.setAttribute('download', `multi-article-wire-service-analysis-${new Date().toISOString().split('T')[0]}.csv`);
+            link.style.visibility = 'hidden';
+            
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+
+        // Pre-populate with sample URLs
+        document.addEventListener('DOMContentLoaded', () => {
+            // Uncomment to pre-populate for testing
+            // document.getElementById('urlInput').value = 'https://apnews.com\nhttps://www.reuters.com\nhttps://www.bloomberg.com';
+        });
+    </script>
+</body>
+</html>
